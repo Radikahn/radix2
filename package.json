@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/jersey-10": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
+    "@tanstack/react-query": "^5.90.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
