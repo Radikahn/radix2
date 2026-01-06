@@ -1,6 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FaDownload } from "react-icons/fa";
+import {
+    IoDocumentTextSharp,
+    IoCopyOutline,
+    IoCheckmark,
+} from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 import header from "./components/header";
@@ -15,6 +19,17 @@ import "@fontsource/jetbrains-mono";
 
 export default function Home() {
     const [showArrow, setShowArrow] = useState(true);
+    const [copied, setCopied] = useState(false);
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText("wheat.radikahn.com");
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error("Failed to copy text: ", err);
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -56,7 +71,7 @@ export default function Home() {
                             scrambleChars={"10"}
                             className="text-gray-800 font-jetbrains-mono text-2xl"
                         >
-                            radixpack minecraft server
+                            radix2 minecraft server
                         </ScrambledText>
                     </div>
 
@@ -86,23 +101,38 @@ export default function Home() {
                         <SoundCloudEmbed trackUrl="https://api.soundcloud.com/tracks/2147966751" />
                     </div>
 
-                    {/*Download Minecraft Mods*/}
+                    {/*Rules for base system*/}
                     <div className="mt-128 space-y-24">
                         <section className="min-h-screen flex items-center justify-center">
                             <div className="text-center space-y-6">
                                 <h2 className="text-gray-800 font-jetbrains-mono text-4xl">
-                                    Download Pack
+                                    Rules
                                 </h2>
-                                <div>
-                                    <Link
-                                        className="flex justify-center inline-contents text-gray-600 font-jetbrains-mono text-lg max-w-2xl"
-                                        href="https://drive.google.com/drive/folders/1iFQ6Gt4rJr74T32pWM2Aj41T1LJlGFd7?usp=sharing"
-                                        target="_blank"
-                                    >
-                                        <p>Google Drive:</p>
+                                <div className="max-w-2xl mx-auto space-y-4">
+                                    <div>
+                                        <Link
+                                            className="flex justify-center inline-contents text-gray-600 font-jetbrains-mono text-lg max-w-2xl"
+                                            href="https://docs.google.com/document/d/1mymts2M5YdEX61BXmfy6mznRR7oYfEbylo9jOxrrwf4/edit?usp=sharing"
+                                            target="_blank"
+                                        >
+                                            <p>Full Rule Set:</p>
 
-                                        <FaDownload className="mt-1 ml-4"></FaDownload>
-                                    </Link>
+                                            <IoDocumentTextSharp className="mt-1 ml-4 h-6 w-6" />
+                                        </Link>
+                                    </div>
+                                    <ul className="text-gray-800 font-jetbrains-mono text-lg text-left list-disc list-inside space-y-2">
+                                        <li>Wheat is the central currency </li>
+                                        <li>
+                                            The world starts as a 800x800
+                                            bordered map
+                                        </li>
+                                        <li>Bartering is the way to play!</li>
+                                        <li>
+                                            Rule enforcements are split between
+                                            restricted server access and player
+                                            moderation
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </section>
@@ -110,8 +140,28 @@ export default function Home() {
                         <section className="min-h-screen flow-root justify-center p-4 ">
                             <div className="text-center space-y-6">
                                 <h2 className="text-gray-800 font-jetbrains-mono text-4xl">
-                                    Mod Suggestions
+                                    Join or Request Access:
                                 </h2>
+                                <div className="flex justify-center">
+                                    <div className="relative group">
+                                        <div className="flex items-center gap-3 px-6 py-4 bg-gray-100 border-2 border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
+                                            <code className="text-gray-800 font-jetbrains-mono text-2xl select-all">
+                                                wheat.radikahn.com
+                                            </code>
+                                            <button
+                                                onClick={copyToClipboard}
+                                                className="p-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition-colors"
+                                                aria-label="Copy to clipboard"
+                                            >
+                                                {copied ? (
+                                                    <IoCheckmark className="w-5 h-5" />
+                                                ) : (
+                                                    <IoCopyOutline className="w-5 h-5" />
+                                                )}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="flex justify-start mt-8">
