@@ -11,7 +11,7 @@ import header from "./components/header";
 import footer from "./components/footer";
 import ClickSpark from "./components/ClickSpark";
 import ScrambledText from "@/components/ScrambledText";
-import YouTubeEmbed from "./components/YouTubeEmbed";
+
 import { CurseForgeModGizmo } from "./components/CurseForgeModGizmo";
 
 import "@fontsource/jersey-10";
@@ -95,14 +95,6 @@ export default function Home() {
                                 className="w-50, h-50"
                             ></img>
                         </Link>
-                    </div>
-
-                    <div className="absolute top-150 right-100 z-10 pointer-events-auto">
-                        <YouTubeEmbed
-                            videoId="bLC2h0bUHfY"
-                            width="100%"
-                            height="300"
-                        />
                     </div>
 
                     {/*Rules for base system*/}
