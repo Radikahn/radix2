@@ -11,7 +11,7 @@ import header from "./components/header";
 import footer from "./components/footer";
 import ClickSpark from "./components/ClickSpark";
 import ScrambledText from "@/components/ScrambledText";
-import SoundCloudEmbed from "./components/SoundCloudEmbed";
+import YouTubeEmbed from "./components/YouTubeEmbed";
 import { CurseForgeModGizmo } from "./components/CurseForgeModGizmo";
 
 import "@fontsource/jersey-10";
@@ -75,7 +75,7 @@ export default function Home() {
                         </ScrambledText>
                     </div>
 
-                    <div className="text-gray-800 font-jersey-10 text-3xl absolute top-60 right-45 z-10 pointer-events-auto">
+                    <div className="text-blue-800 font-jersey-10 text-3xl absolute top-60 right-45 z-10 pointer-events-auto">
                         <a
                             href="https://www.instagram.com/radikahn/"
                             target="_blank"
@@ -98,7 +98,11 @@ export default function Home() {
                     </div>
 
                     <div className="absolute top-150 right-100 z-10 pointer-events-auto">
-                        <SoundCloudEmbed trackUrl="https://api.soundcloud.com/tracks/2147966751" />
+                        <YouTubeEmbed
+                            videoId="bLC2h0bUHfY"
+                            width="100%"
+                            height="300"
+                        />
                     </div>
 
                     {/*Rules for base system*/}
