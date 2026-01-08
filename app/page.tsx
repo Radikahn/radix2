@@ -12,8 +12,6 @@ import footer from "./components/footer";
 import ClickSpark from "./components/ClickSpark";
 import ScrambledText from "@/components/ScrambledText";
 
-import { CurseForgeModGizmo } from "./components/CurseForgeModGizmo";
-
 import "@fontsource/jersey-10";
 import "@fontsource/jetbrains-mono";
 
