@@ -23,7 +23,7 @@ COPY . .
 RUN bun run build
 
 # Production image, copy all the files and run next
-FROM base AS runner
+FROM node:20-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -45,5 +45,5 @@ EXPOSE 7272
 ENV PORT=7272
 ENV HOSTNAME="0.0.0.0"
 
-# Use bun to run the server
-CMD ["bun", "run", "server.js"]
+# Use node to run the server (required for standalone mode)
+CMD ["node", "server.js"]

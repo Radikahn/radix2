@@ -11,6 +11,7 @@ import header from "./components/header";
 import footer from "./components/footer";
 import ClickSpark from "./components/ClickSpark";
 import ScrambledText from "@/components/ScrambledText";
+import SoundCloudEmbed from "./components/SoundCloudEmbed";
 
 import "@fontsource/jersey-10";
 import "@fontsource/jetbrains-mono";
@@ -83,7 +84,9 @@ export default function Home() {
                         </a>
                     </div>
 
-                    <div className="absolute top-80 right-320 z-10 pointer-events-auto">
+                    <SoundCloudEmbed />
+
+                    <div className="absolute top-80 left-20 z-10 pointer-events-auto">
                         <Link
                             href="https://www.reddit.com/r/NixOS/comments/173rast/hilarious_and_true_advice_for_anyone_interested/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button"
                             target="_blank"
