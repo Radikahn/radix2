@@ -1,7 +1,6 @@
-# syntax=docker.io/docker/dockerfile:1
 FROM oven/bun:1-alpine AS base
 
-# Install dependencies only when needed
+# Install dependencies
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
@@ -9,20 +8,19 @@ WORKDIR /app
 COPY package.json bun.lockb* bun.lock* ./
 RUN bun install --frozen-lockfile
 
-# Build the source code
+# Build
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
 RUN bun run build
 
-# Serve static files with nginx
-FROM nginx:alpine AS runner
-
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Serve with Bun
+FROM base AS runner
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY serve.ts .
 
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["bun", "run", "serve.ts"]
