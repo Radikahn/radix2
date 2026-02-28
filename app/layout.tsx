@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import TanstackClientWrapper from '@/lib/providers'
+import { HydrationBoundary } from '@tanstack/react-query';
 import "./globals.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,6 +20,7 @@ export const metadata: Metadata = {
   description: "I like to make things - 01110010 01100001 01100100 01101001 01111000",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,8 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        
+        <TanstackClientWrapper>{children}</TanstackClientWrapper>
+
       </body>
     </html>
   );
 }
+
+
+
