@@ -1,6 +1,8 @@
 import Flicker from "./aboutItems/Flicker";
 import Spotify from "./aboutItems/Spotify";
 import SoundCloud from "./aboutItems/SoundCloud";
+import Saec from "./aboutItems/Saec";
+import Github from "./aboutItems/Github";
 
 export default function MyLinks() {
   return (
@@ -13,6 +15,12 @@ export default function MyLinks() {
       </div>
       <div className="absolute bottom-[50%] left-[25%]">
         <Spotify />
+      </div>
+      <div className="absolute bottom-[14%] right-[30%]">
+        <Saec />
+      </div>
+      <div className="absolute -bottom-[10%] left-[8%]">
+        <Github />
       </div>
     </div>
   );
