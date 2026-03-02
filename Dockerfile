@@ -1,49 +1,26 @@
-# syntax=docker.io/docker/dockerfile:1
 FROM oven/bun:1-alpine AS base
 
-# Install dependencies only when needed
+# Install dependencies
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-# Install dependencies with Bun
-COPY package.json bun.lockb* ./
+COPY package.json bun.lockb* bun.lock* ./
 RUN bun install --frozen-lockfile
 
-# Rebuild the source code only when needed
+# Build
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Next.js collects completely anonymous telemetry data about general usage.
-# Uncomment the following line to disable telemetry during the build.
-# ENV NEXT_TELEMETRY_DISABLED=1
-
 RUN bun run build
 
-# Production image, copy all the files and run next
-FROM node:20-alpine AS runner
+# Serve with Bun
+FROM base AS runner
 WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY serve.ts .
 
-ENV NODE_ENV=production
-# Uncomment the following line to disable telemetry during runtime.
-# ENV NEXT_TELEMETRY_DISABLED=1
+EXPOSE 8080
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-# Automatically leverage output traces to reduce image size
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 7272
-ENV PORT=7272
-ENV HOSTNAME="0.0.0.0"
-
-# Use node to run the server (required for standalone mode)
-CMD ["node", "server.js"]
+CMD ["bun", "run", "serve.ts"]

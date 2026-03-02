@@ -1,25 +1,7 @@
 services:
-    nextjs:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        container_name: radix2-app
-        ports:
-            - "7272:7272"
-        environment:
-            - NODE_ENV=production
-        restart: unless-stopped
-        healthcheck:
-            test:
-                [
-                    "CMD",
-                    "wget",
-                    "--quiet",
-                    "--tries=1",
-                    "--spider",
-                    "http://localhost:7272",
-                ]
-            interval: 30s
-            timeout: 10s
-            retries: 3
-            start_period: 40s
+  radixsite:
+    build: .
+    container_name: radixsite
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
