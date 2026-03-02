@@ -110,7 +110,7 @@ export default function Home() {
             </section>
 
             {/*stuff about my links / self promo*/}
-            <section className="flex flex-col min-h-screen justify-start items-start">
+            <section className="flex flex-col mb-20 pb-20 min-h-screen justify-start items-start">
               <MyLinks />
             </section>
           </div>

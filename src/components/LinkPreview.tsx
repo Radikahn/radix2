@@ -12,6 +12,7 @@ interface LinkPreviewProps {
   href: string;
   previewUrl?: string;
   previewContent?: ReactNode;
+  previewImage?: ReactNode;
   previewLabel: string;
   className?: string;
 }
@@ -22,6 +23,7 @@ export default function LinkPreview({
   href,
   previewUrl,
   previewContent,
+  previewImage,
   previewLabel,
   className,
 }: LinkPreviewProps) {
@@ -135,13 +137,13 @@ export default function LinkPreview({
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="text-xs text-orange-500 font-jetbrains-mono hover:underline"
+            className="text-xs text-blue-700 font-jetbrains-mono hover:underline"
           >
             open
           </a>
         </div>
         {isVisible &&
-          (previewContent ?? (
+          (previewImage ?? previewContent ?? (
             <iframe
               width="100%"
               height="100%"
