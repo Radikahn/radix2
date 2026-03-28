@@ -55,29 +55,33 @@ export default function Home() {
           <a href="#">{header()}</a>
         </header>
 
-        <main className="flex-auto p-6 relative">
+        <main className="flex-auto p-6 mb-24 relative">
           <div>
-            <ScrambledText
-              radius={50}
-              duration={5}
-              speed={0.5}
-              scrambleChars={"10"}
-              className="text-gray-800 font-jetbrains-mono text-2xl cursor-default"
-            >
-              Hi my name is Radi
-            </ScrambledText>
+            <span>
+              <ScrambledText
+                radius={50}
+                duration={5}
+                speed={0.5}
+                scrambleChars={"10"}
+                className="text-gray-800 font-jetbrains-mono text-2xl cursor-default"
+              >
+                Hi my name is Radi
+              </ScrambledText>
+            </span>
           </div>
 
           <div>
-            <ScrambledText
-              radius={50}
-              duration={5}
-              speed={0.5}
-              scrambleChars={"10"}
-              className="absolute top-80 left-100 z-10 text-gray-800 font-jetbrains-mono text-2xl cursor-default"
-            >
-              welcome to my chunk of the internet
-            </ScrambledText>
+            <span>
+              <ScrambledText
+                radius={50}
+                duration={5}
+                speed={0.5}
+                scrambleChars={"10"}
+                className="absolute top-80 left-100 z-10 text-gray-800 font-jetbrains-mono text-2xl cursor-default"
+              >
+                welcome to my chunk of the internet
+              </ScrambledText>
+            </span>
           </div>
 
           <div className="text-blue-800 font-jersey-10 text-3xl absolute top-60 right-45 z-10 pointer-events-auto">

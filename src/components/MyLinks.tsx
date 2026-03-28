@@ -4,6 +4,7 @@ import SoundCloud from "./aboutItems/SoundCloud";
 import Saec from "./aboutItems/Saec";
 import Github from "./aboutItems/Github";
 import ShopSaec from "./aboutItems/ShopSaec";
+import Sasc from "./aboutItems/Sasc";
 
 export default function MyLinks() {
   return (
@@ -25,6 +26,9 @@ export default function MyLinks() {
       </div>
       <div className="absolute bottom-[70%] right-[28%]">
         <ShopSaec />
+      </div>
+      <div className="absolute -bottom-[20%] right-[25%]">
+        <Sasc />
       </div>
     </div>
   );
