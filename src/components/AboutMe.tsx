@@ -19,6 +19,7 @@ export default function AboutMe() {
             </div>
 
             <p className="mt-8">Here to explore? Keep scrolling :3</p>
+            <p className="mt-4">Below exists stuff I've made and my links!</p>
           </div>
         </div>
       </div>
