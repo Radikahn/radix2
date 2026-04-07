@@ -5,6 +5,7 @@ import Saec from "./aboutItems/Saec";
 import Github from "./aboutItems/Github";
 import ShopSaec from "./aboutItems/ShopSaec";
 import Sasc from "./aboutItems/Sasc";
+import RadiElide from "./aboutItems/RadiElide";
 
 export default function MyLinks() {
   return (
@@ -29,6 +30,9 @@ export default function MyLinks() {
       </div>
       <div className="absolute -bottom-[20%] right-[25%]">
         <Sasc />
+      </div>
+      <div className="absolute -bottom-[26%] right-[62%]">
+        <RadiElide />
       </div>
     </div>
   );
