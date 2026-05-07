@@ -1,6 +1,7 @@
 services:
   radixsite:
     build: .
+    pull_policy: build
     container_name: radixsite
     ports:
       - "8080:8080"
