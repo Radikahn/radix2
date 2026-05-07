@@ -6,10 +6,11 @@ export default function SoundCloudEmbed() {
         width="100%"
         height="300"
         scrolling="no"
-        frameBorder="no"
+        frameborder="no"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2147966751&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1685851236&color=%2388acb4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
       ></iframe>
+
       <div
         style={{
           fontSize: "10px",
@@ -25,23 +26,23 @@ export default function SoundCloudEmbed() {
         }}
       >
         <a
-          href="https://soundcloud.com/2hollis"
-          title="2hollis"
+          href="https://soundcloud.com/title-fight"
+          title="Title Fight"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#cccccc", textDecoration: "none" }}
         >
-          2hollis
+          Title Fight
         </a>
         {" · "}
         <a
-          href="https://soundcloud.com/2hollis/fly"
-          title="fly"
+          href="https://soundcloud.com/title-fight/be-a-toy"
+          title="Be a Toy"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "#cccccc", textDecoration: "none" }}
         >
-          fly
+          Be a Toy
         </a>
       </div>
     </div>
