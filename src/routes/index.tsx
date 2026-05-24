@@ -10,6 +10,9 @@ import "@fontsource/jersey-10";
 import "@fontsource/jetbrains-mono";
 import AboutMe from "@/components/AboutMe";
 import MyLinks from "@/components/MyLinks";
+import MobileGreeting from "@/components/mobile/Greeting";
+import MobileNixOSLink from "@/components/mobile/NixOSLink";
+import MobileSoundCloudEmbed from "@/components/mobile/SoundCloudEmbed";
 
 export default function Home() {
   const [showArrow, setShowArrow] = useState(true);
@@ -55,7 +58,8 @@ export default function Home() {
           <a href="#">{header()}</a>
         </header>
 
-        <main className="flex-auto p-6 mb-24 relative">
+        {/* Desktop / tablet layout — unchanged */}
+        <main className="hidden md:block flex-auto p-6 mb-24 relative">
           <div>
             <span>
               <ScrambledText
@@ -118,6 +122,21 @@ export default function Home() {
               <MyLinks />
             </section>
           </div>
+        </main>
+
+        {/* Mobile layout — stacked, no absolute positioning */}
+        <main className="md:hidden flex-auto px-4 pt-24 pb-16 flex flex-col gap-10">
+          <MobileGreeting />
+          <MobileNixOSLink />
+          <MobileSoundCloudEmbed />
+
+          <section className="pt-12">
+            <AboutMe />
+          </section>
+
+          <section className="flex flex-col mb-20 pb-20 min-h-screen justify-start items-start">
+            <MyLinks />
+          </section>
         </main>
 
         <footer className="w-full p-6 flex justify-end">{footer()}</footer>

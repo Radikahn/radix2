@@ -1,3 +1,3 @@
-# The subdomain site x.radikahn.com
+# My Personal  Website `radikahn.com`
 
 x>?<<<welcome>>>2<radix>?
