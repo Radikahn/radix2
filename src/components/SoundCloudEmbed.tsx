@@ -8,7 +8,7 @@ export default function SoundCloudEmbed() {
         scrolling="no"
         frameBorder="no"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1685851236&color=%2388acb4&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1847802621&color=%234c4c5c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
       ></iframe>
 
       <div
@@ -26,23 +26,23 @@ export default function SoundCloudEmbed() {
         }}
       >
         <a
-          href="https://soundcloud.com/title-fight"
-          title="Title Fight"
+          href="https://soundcloud.com/bhertuy"
+          title="Bhertuy"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#cccccc", textDecoration: "none" }}
+          style={{ color: "black", textDecoration: "none" }}
         >
-          Title Fight
+          Bhertuy
         </a>
         {" · "}
         <a
-          href="https://soundcloud.com/title-fight/be-a-toy"
-          title="Be a Toy"
+          href="https://soundcloud.com/bhertuy/camera-work"
+          title="camera work"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: "#cccccc", textDecoration: "none" }}
+          style={{ color: "black", textDecoration: "none" }}
         >
-          Be a Toy
+          camera work
         </a>
       </div>
     </div>
