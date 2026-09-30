@@ -4,7 +4,7 @@ export default function Saec() {
   return (
     <LinkPreview
       className=""
-      label="Car Club Site"
+      label="SJSU SAEC Website"
       href="https://we-saec.me/dash"
       previewLabel="we-saec.me/dash"
       previewImage={
