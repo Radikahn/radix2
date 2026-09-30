@@ -7,8 +7,8 @@ export default function SoundCloudEmbed() {
         height="300"
         scrolling="no"
         frameBorder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A1847802621&color=%234c4c5c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
+        allow="autoplay; encrypted-media"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A181713573&color=%238c6474&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
       ></iframe>
 
       <div
@@ -26,23 +26,23 @@ export default function SoundCloudEmbed() {
         }}
       >
         <a
-          href="https://soundcloud.com/bhertuy"
-          title="Bhertuy"
+          href="https://soundcloud.com/tooore"
+          title="tooore"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "black", textDecoration: "none" }}
         >
-          Bhertuy
+          tooore
         </a>
         {" · "}
         <a
-          href="https://soundcloud.com/bhertuy/camera-work"
-          title="camera work"
+          href="https://soundcloud.com/tooore/burial-forgive"
+          title="Burial - Forgive"
           target="_blank"
           rel="noopener noreferrer"
           style={{ color: "black", textDecoration: "none" }}
         >
-          camera work
+          Burial - Forgive
         </a>
       </div>
     </div>

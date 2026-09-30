@@ -5,12 +5,12 @@ export default function Spotify() {
     <LinkPreview
       className=""
       label="my Spotify"
-      href="https://open.spotify.com/user/22qxrmza63qc2egeimomjv4ny?si=5e9ecdf3ca7a4714"
+      href="https://open.spotify.com/user/22qxrmza63qc2egeimomjv4ny?si=0c66eb0fc9a74259"
       previewLabel="Spotify.com/Radikahn"
       previewContent={
         <iframe
           style={{ borderRadius: 12 }}
-          src="https://open.spotify.com/embed/playlist/71EWNfEZwJRjxTiE83wD7K?utm_source=generator"
+          src="https://open.spotify.com/embed/playlist/0vZBwK62NMMIWkbf6RRx5T?utm_source=generator&si=09796ebf83de4022"
           width="100%"
           height="100%"
           frameBorder="0"
