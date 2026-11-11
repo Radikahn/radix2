@@ -18,8 +18,21 @@ export default function AboutMe() {
               </a>
             </div>
 
+            <p className="mt-8">
+              Also I have a {` `}
+              <a
+                className="text-blue-700 underline cursor-pointer hover:text-purple-900 duration-500"
+                href="https://blog.radikahn.com"
+                target="_blank">
+                blog!
+              </a>
+            </p>
+
+
             <p className="mt-8">Here to explore? Keep scrolling :3</p>
             <p className="mt-4">Below exists stuff I've made and my links!</p>
+
+
           </div>
         </div>
       </div>
