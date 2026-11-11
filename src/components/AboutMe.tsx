@@ -1,4 +1,6 @@
+import { ALL } from "dns";
 import { IoDocument } from "react-icons/io5";
+import { Tooltip } from "./toolTip/Tooltip";
 
 export default function AboutMe() {
   return (
@@ -8,24 +10,41 @@ export default function AboutMe() {
         <div className="flex flex-col">
           <div className="font-jetbrains-mono justify-center cursor-default">
             <p>Hi! I like to make things (software, photography, and music) </p>
-            <div className="flex flex-row justify-center">
+            <div className="flex flex-row justify-center mb-8">
               <p className="mt-2">If you are a recruiter look here {"->"}</p>
               <a
                 href="https://www.linkedin.com/in/radman-shahbazkhan-3799302b2/"
                 target="_blank"
               >
-                <IoDocument className="ml-4 mt-2 text-2xl cursor-pointer "></IoDocument>
+                <Tooltip text="View my LinkedIn">
+                  <IoDocument className="ml-4 mt-2 text-2xl cursor-pointer"></IoDocument>
+                </Tooltip>
               </a>
             </div>
 
+            <span>
+              Here is {' '}
+              <Tooltip text="cool things I coded live here">
+                <a
+                  className="text-blue-700 underline cursor-pointer hover:text-purple-900 duration-500"
+                  href="https://github.com/Radikahn"
+                  target="_blank"
+                >
+                  my Github
+                </a>
+              </Tooltip>
+            </span>
+
             <p className="mt-8">
               Also I have a {` `}
-              <a
-                className="text-blue-700 underline cursor-pointer hover:text-purple-900 duration-500"
-                href="https://blog.radikahn.com"
-                target="_blank">
-                blog!
-              </a>
+              <Tooltip text="a running collection of my thoughts and interests">
+                <a
+                  className="text-blue-700 underline cursor-pointer hover:text-purple-900 duration-500"
+                  href="https://blog.radikahn.com"
+                  target="_blank">
+                  blog!
+                </a>
+              </Tooltip>
             </p>
 
 
