@@ -1,0 +1,83 @@
+.wiki {
+  position: relative;
+  min-height: 100vh;
+  background: #fff;
+  color: #202122;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.wiki-page { max-width: 960px; margin: 0 auto; padding: 16px 16px 48px; }
+.wiki a { color: #0645ad; text-decoration: none; }
+.wiki a:hover { text-decoration: underline; }
+.wiki p { margin: 0.5em 0; }
+.wiki ul { list-style: disc; padding-left: 1.6em; margin: 0.3em 0; }
+.wiki ol { list-style: decimal; padding-left: 2em; margin: 0.3em 0; }
+
+.wiki-back {
+  display: inline-flex; align-items: center; gap: 6px; margin-bottom: 12px;
+  padding: 3px 10px; border: 1px solid #a2a9b1; background: #fff;
+  font-size: 12px; letter-spacing: 0.02em; color: #202122 !important;
+  transition: background 150ms, color 150ms, border-color 150ms;
+}
+.wiki-back:hover { background: #202122; border-color: #202122; color: #fff !important; text-decoration: none !important; }
+.wiki-back .arrow { display: inline-block; transition: transform 150ms; }
+.wiki-back:hover .arrow { transform: translateX(-3px); }
+.wiki-back:focus-visible { outline: 2px solid #0645ad; outline-offset: 2px; }
+/* Above the mine layer so Edit can always be clicked to stop mining. */
+.wiki-tabs { position: relative; z-index: 3; display: flex; gap: 2px; border-bottom: 1px solid #a7d7f9; font-size: 13px; }
+.wiki-tabs > * { padding: 4px 10px; color: #0645ad; }
+.wiki-tabs > :not(.pick-cursor) { cursor: default; }
+.wiki-tabs button { font: inherit; background: none; border: 0; }
+.wiki-tabs .active { color: #202122; border: 1px solid #a7d7f9; border-bottom-color: #fff; margin-bottom: -1px; background: #fff; }
+.wiki-tabs .spacer { flex: 1; padding: 0; }
+.wiki-tabs .wiki-tab-edit:hover { text-decoration: underline; }
+.wiki-tabs .wiki-tab-edit:focus-visible { outline: 2px solid #0645ad; outline-offset: -2px; }
+
+.wiki-title, .wiki h2 {
+  font-family: 'Linux Libertine', Georgia, Times, serif;
+  font-weight: normal;
+  border-bottom: 1px solid #a2a9b1;
+}
+.wiki-title { font-size: 28.8px; margin-top: 16px; line-height: 1.3; }
+.wiki-tagline { font-size: 12.7px; color: #54595d; margin-bottom: 12px; }
+.wiki h2 { font-size: 21px; margin: 1em 0 0.25em; clear: none; }
+.wiki h3 { font-size: 15px; font-weight: bold; margin: 0.8em 0 0.2em; }
+.wiki-edit { font-family: Arial, sans-serif; font-size: 13px; color: #54595d; margin-left: 8px; }
+.wiki-short { font-style: italic; color: #54595d; font-size: 13px; }
+
+.wiki-infobox {
+  float: right; clear: right; width: 22em; margin: 0 0 1em 1.4em;
+  border: 1px solid #a2a9b1; background: #f8f9fa; font-size: 12.5px;
+  border-collapse: separate; border-spacing: 3px; line-height: 1.5;
+}
+.wiki-infobox th, .wiki-infobox td { padding: 2px 4px; vertical-align: top; text-align: left; }
+.wiki-infobox th[scope=row] { width: 38%; }
+.wiki-infobox-name { text-align: center !important; font-size: 16px; padding: 0 !important; }
+.wiki-infobox-image { text-align: center !important; }
+.wiki-infobox-image img { max-width: 100%; margin: 0 auto; }
+.wiki-image-placeholder {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  border: 1px dashed #a2a9b1; color: #72777d; background: #fff;
+}
+.wiki-caption { font-size: 12px; padding-top: 2px; }
+
+.wiki-toc {
+  display: inline-block; border: 1px solid #a2a9b1; background: #f8f9fa;
+  padding: 7px 14px 7px 10px; margin: 0.5em 0; font-size: 13px;
+}
+.wiki-toc-title { font-weight: bold; text-align: center; }
+.wiki-toc ol { list-style: none; padding-left: 0; }
+.wiki-toc .num { color: #202122; padding-right: 4px; }
+
+.wiki-cite { font-size: 10px; line-height: 1; }
+.wiki-refs { font-size: 12.5px; }
+.wiki-fill { background: #fef6e7; color: #ac6600; font-style: italic; }
+.wiki-footer {
+  clear: both; margin-top: 32px; padding-top: 8px;
+  border-top: 1px solid #a2a9b1; font-size: 11px; color: #54595d;
+}
+
+@media (max-width: 640px) {
+  .wiki-infobox { float: none; width: 100%; margin: 0 0 1em; }
+}

@@ -1,0 +1,59 @@
+/* The hole under the lid, and the lid itself: the hinge (left end) lifts with
+   a springy overshoot while the face squashes and stretches. */
+.penguin-hole {
+  position: relative;
+  background: linear-gradient(#141c27, #2d3d51);
+  box-shadow: inset 0 6px 6px -4px rgba(0, 0, 0, 0.7);
+}
+/* Transparent, so the peeking penguin shows through, but above the mining
+   layer so the hideout still works in mine mode. */
+.penguin-hit { position: absolute; inset: 0; z-index: 5; cursor: pointer; }
+.penguin-lid {
+  position: relative; z-index: 5; cursor: pointer;
+  user-select: none; -webkit-user-select: none;
+  transform-origin: 0 100%;
+  /* Dropping shut overshoots a little, so it lands with a thud. */
+  transition: transform 240ms cubic-bezier(0.6, 0, 0.4, 1.5);
+}
+.penguin-lid[data-lid="peek"] { transform: translateY(-12px) rotate(-6deg); transition: transform 460ms cubic-bezier(0.3, 1.6, 0.5, 1); }
+.penguin-lid[data-lid="open"] { transform: translateY(-20px) rotate(-13deg); transition: transform 420ms cubic-bezier(0.3, 1.6, 0.5, 1); }
+.penguin-lid:focus-visible { outline: 2px solid #0645ad; outline-offset: 2px; }
+
+.penguin-lid-face {
+  padding: 2px 4px; background: #cedff2; transform-origin: 50% 100%;
+  transition: box-shadow 240ms;
+}
+.penguin-lid[data-lid="peek"] .penguin-lid-face {
+  box-shadow: 0 8px 10px -6px rgba(0, 0, 0, 0.45);
+  animation: penguin-squash 460ms ease-out;
+}
+.penguin-lid[data-lid="open"] .penguin-lid-face {
+  box-shadow: 0 10px 12px -6px rgba(0, 0, 0, 0.5);
+  animation: penguin-squash 420ms ease-out;
+}
+@keyframes penguin-squash {
+  0% { transform: scale(1.04, 0.78); }
+  35% { transform: scale(0.97, 1.1); }
+  65% { transform: scale(1.01, 0.97); }
+  100% { transform: none; }
+}
+
+.penguin {
+  position: absolute; left: 0; top: 0; z-index: 4; width: 52px; height: 56px; /* W, H in PenguinHideout.tsx */
+  pointer-events: none; visibility: hidden; will-change: transform;
+}
+.penguin.is-home { transition: transform 380ms cubic-bezier(0.3, 1.6, 0.5, 1), clip-path 380ms cubic-bezier(0.3, 1.6, 0.5, 1); }
+.penguin.is-out { z-index: 6; }
+
+.penguin-pose { position: absolute; inset: 0; transform-origin: 50% 100%; transition: transform 160ms ease-out; }
+/* Stretched tall while it's in the air. */
+.penguin.is-airborne .penguin-pose { transform: scale(0.92, 1.08); }
+.penguin-pose img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.penguin-walk, .penguin.is-walking .penguin-still { display: none; }
+.penguin.is-walking .penguin-walk { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .penguin-lid-face { animation: none !important; }
+  .penguin.is-walking .penguin-walk { display: none; }
+  .penguin.is-walking .penguin-still { display: block; }
+}
