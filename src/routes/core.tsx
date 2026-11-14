@@ -31,6 +31,7 @@ const profile = {
   shortDescription: "thanks for checking me out  >_<",
   infobox: {
     image: "/mrFox.jpg", // e.g. "/me.jpg" (put the file in public/)
+    imageCaption: "", // shown under the image; leave empty to hide
     rows: [
       ["Education", <>SJSU Data Science, 2026</>],
       ["Interests", "Cars, software, photography, and music"],
@@ -218,7 +219,9 @@ export default function CorePage() {
                 ) : (
                   <div className="wiki-image-placeholder">no image</div>
                 )}
-                <div className="wiki-caption">{infobox.imageCaption}</div>
+                {infobox.imageCaption && (
+                  <div className="wiki-caption">{infobox.imageCaption}</div>
+                )}
               </td>
             </tr>
             {infobox.rows.map(([label, value]) => (
