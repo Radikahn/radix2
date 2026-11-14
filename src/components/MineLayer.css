@@ -1,0 +1,53 @@
+/* The pickaxe cursor. The hotspot (6 3) must match HOT_X/HOT_Y in MineLayer.tsx. */
+.pick-cursor {
+  cursor: url(/pick-cursor.png) 6 3, crosshair;
+  cursor: -webkit-image-set(url(/pick-cursor.png) 1x, url(/pick-cursor@2x.png) 2x) 6 3, crosshair;
+  cursor: image-set(url(/pick-cursor.png) 1x, url(/pick-cursor@2x.png) 2x) 6 3, crosshair;
+}
+
+.mine-layer {
+  position: absolute; inset: 0; z-index: 2; overflow: hidden;
+  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  touch-action: pan-y pinch-zoom;
+}
+.mine-layer.mine-swinging { cursor: none; }
+
+.mine-grid {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+  background-size: var(--mine-cell) var(--mine-cell);
+  animation: mine-grid 1.4s ease-out;
+}
+@keyframes mine-grid { 15% { opacity: 1; } }
+
+.mine-core { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: #141518; }
+.mine-core pre {
+  margin: 0; padding: 6px 8px; white-space: pre-wrap; word-break: break-all;
+  font: 10px/14px 'JetBrains Mono', monospace; color: #3a3e47;
+}
+.mine-hole { position: absolute; width: var(--mine-cell); height: var(--mine-cell); }
+
+.mine-fx { position: absolute; inset: 0; pointer-events: none; }
+.mine-block { position: absolute; width: var(--mine-cell); height: var(--mine-cell); transition: transform 90ms ease-out; }
+.mine-block-inner { position: absolute; inset: 0; overflow: hidden; }
+.mine-block-shade { position: absolute; inset: 0; background: #000; opacity: 0; transition: opacity 90ms; }
+.mine-cracks { position: absolute; inset: 0; width: 100%; height: 100%; }
+.mine-cracks path {
+  fill: none; stroke: rgba(0, 0, 0, 0.75); stroke-width: 1.5; stroke-linejoin: bevel;
+  stroke-dasharray: 1; stroke-dashoffset: var(--crack, 1);
+  transition: stroke-dashoffset 90ms ease-out;
+}
+.mine-bit { position: absolute; pointer-events: none; }
+
+.mine-hover {
+  position: absolute; width: var(--mine-cell); height: var(--mine-cell); pointer-events: none;
+  box-shadow: inset 0 0 0 2px #000, inset 0 0 0 3px rgba(255, 255, 255, 0.7);
+}
+
+.mine-pick {
+  position: fixed; left: 0; top: 0; width: 26px; height: 26px; display: none;
+  transform-origin: 0 100%; image-rendering: pixelated; pointer-events: none;
+}
+.mine-swinging .mine-pick { display: block; }

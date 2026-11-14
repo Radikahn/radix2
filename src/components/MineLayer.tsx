@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type RefObject } from "react";
+import "./MineLayer.css";
 
 // ---------------------------------------------------------------------------
 // Mine mode. Splits the element under it into a grid of CELL-sized blocks
@@ -19,12 +20,6 @@ const HITS = { air: 2, text: 4, box: 5, media: 7 };
 // Where the pick cursor points: the tip of the left prong in pick-cursor.png.
 const HOT_X = 6;
 const HOT_Y = 3;
-
-export const pickCursorCss = `
-  cursor: url(/pick-cursor.png) ${HOT_X} ${HOT_Y}, crosshair;
-  cursor: -webkit-image-set(url(/pick-cursor.png) 1x, url(/pick-cursor@2x.png) 2x) ${HOT_X} ${HOT_Y}, crosshair;
-  cursor: image-set(url(/pick-cursor.png) 1x, url(/pick-cursor@2x.png) 2x) ${HOT_X} ${HOT_Y}, crosshair;
-`;
 
 type Cell = { col: number; row: number };
 
@@ -70,7 +65,7 @@ export default function MineLayer({ rootRef }: MineLayerProps) {
     if (!root || !layer || !fx || !pick) return;
 
     const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setSource(pageCopy(root, layer, true).outerHTML);
+    setSource(pageCopy(root, layer).outerHTML);
 
     const broken = new Set<string>();
     let pointer: { x: number; y: number } | null = null;
@@ -273,8 +268,12 @@ export default function MineLayer({ rootRef }: MineLayerProps) {
     : "inset(50%)";
 
   return (
-    <div ref={layerRef} className="mine-layer" aria-hidden="true">
-      <style>{mineCss}</style>
+    <div
+      ref={layerRef}
+      className="mine-layer pick-cursor"
+      style={{ "--mine-cell": `${CELL}px` } as CSSProperties}
+      aria-hidden="true"
+    >
       <div className="mine-grid" />
 
       <div className="mine-core" style={{ clipPath: clip, WebkitClipPath: clip }}>
@@ -299,11 +298,11 @@ export default function MineLayer({ rootRef }: MineLayerProps) {
   );
 }
 
-// The root's content without the mine layer, optionally without <style>s.
-function pageCopy(root: HTMLElement, layer: HTMLElement, withStyles: boolean) {
+// The root's content without the mine layer.
+function pageCopy(root: HTMLElement, layer: HTMLElement) {
   const copy = root.cloneNode(false) as HTMLElement;
   for (const child of root.children) {
-    if (child === layer || (!withStyles && child.tagName === "STYLE")) continue;
+    if (child === layer) continue;
     copy.append(child.cloneNode(true));
   }
   return copy;
@@ -322,7 +321,7 @@ function buildBlock(cell: Cell, root: HTMLElement, layer: HTMLElement): Block {
 
   // A full copy of the page, offset so its slice lines up exactly with the
   // real content underneath.
-  const ghost = pageCopy(root, layer, false);
+  const ghost = pageCopy(root, layer);
   ghost.removeAttribute("id");
   ghost.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
   ghost.querySelectorAll("img").forEach((img) => {
@@ -528,53 +527,3 @@ function holeShadow(top: boolean, left: boolean, right: boolean, bottom: boolean
   ].filter(Boolean);
   return sides.length ? sides.join(", ") : undefined;
 }
-
-const mineCss = `
-.mine-layer {
-  position: absolute; inset: 0; z-index: 2; overflow: hidden;
-  user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
-  touch-action: pan-y pinch-zoom;
-  ${pickCursorCss}
-}
-.mine-layer.mine-swinging { cursor: none; }
-
-.mine-grid {
-  position: absolute; inset: 0; pointer-events: none; opacity: 0;
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.18) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
-  background-size: ${CELL}px ${CELL}px;
-  animation: mine-grid 1.4s ease-out;
-}
-@keyframes mine-grid { 15% { opacity: 1; } }
-
-.mine-core { position: absolute; inset: 0; overflow: hidden; pointer-events: none; background: #141518; }
-.mine-core pre {
-  margin: 0; padding: 6px 8px; white-space: pre-wrap; word-break: break-all;
-  font: 10px/14px 'JetBrains Mono', monospace; color: #3a3e47;
-}
-.mine-hole { position: absolute; width: ${CELL}px; height: ${CELL}px; }
-
-.mine-fx { position: absolute; inset: 0; pointer-events: none; }
-.mine-block { position: absolute; width: ${CELL}px; height: ${CELL}px; transition: transform 90ms ease-out; }
-.mine-block-inner { position: absolute; inset: 0; overflow: hidden; }
-.mine-block-shade { position: absolute; inset: 0; background: #000; opacity: 0; transition: opacity 90ms; }
-.mine-cracks { position: absolute; inset: 0; width: 100%; height: 100%; }
-.mine-cracks path {
-  fill: none; stroke: rgba(0, 0, 0, 0.75); stroke-width: 1.5; stroke-linejoin: bevel;
-  stroke-dasharray: 1; stroke-dashoffset: var(--crack, 1);
-  transition: stroke-dashoffset 90ms ease-out;
-}
-.mine-bit { position: absolute; pointer-events: none; }
-
-.mine-hover {
-  position: absolute; width: ${CELL}px; height: ${CELL}px; pointer-events: none;
-  box-shadow: inset 0 0 0 2px #000, inset 0 0 0 3px rgba(255, 255, 255, 0.7);
-}
-
-.mine-pick {
-  position: fixed; left: 0; top: 0; width: 26px; height: 26px; display: none;
-  transform-origin: 0 100%; image-rendering: pixelated; pointer-events: none;
-}
-.mine-swinging .mine-pick { display: block; }
-`;
