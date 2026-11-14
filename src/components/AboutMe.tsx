@@ -1,5 +1,6 @@
 import { ALL } from "dns";
 import { IoDocument } from "react-icons/io5";
+import { Link } from "@tanstack/react-router";
 import { Tooltip } from "./toolTip/Tooltip";
 
 export default function AboutMe() {
@@ -48,7 +49,18 @@ export default function AboutMe() {
             </p>
 
 
-            <p className="mt-8">Here to explore? Keep scrolling :3</p>
+            <p className="mt-8">
+              Here to explore?{" "}
+              <Tooltip text="more about me">
+                <Link
+                  to="/core"
+                  className="text-blue-700 underline cursor-pointer hover:text-purple-900 duration-500"
+                >
+                  Read the core??
+                </Link>
+              </Tooltip>{" "}
+              :3
+            </p>
             <p className="mt-4">Below exists stuff I've made and my links!</p>
 
 
