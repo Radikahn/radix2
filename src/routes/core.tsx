@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import MineLayer, { pickCursorCss } from "@/components/MineLayer";
+import PenguinHideout from "@/components/PenguinHideout";
 
 // ---------------------------------------------------------------------------
 // Fill-in template. Everything on the page is driven by the data below.
@@ -206,7 +207,9 @@ export default function CorePage() {
         <table className="wiki-infobox">
           <tbody>
             <tr>
-              <th colSpan={2} className="wiki-infobox-name">{profile.name}</th>
+              <th colSpan={2} className="wiki-infobox-name">
+                <PenguinHideout name={profile.name} />
+              </th>
             </tr>
             <tr>
               <td colSpan={2} className="wiki-infobox-image">
@@ -322,7 +325,7 @@ const wikiCss = `
 }
 .wiki-infobox th, .wiki-infobox td { padding: 2px 4px; vertical-align: top; text-align: left; }
 .wiki-infobox th[scope=row] { width: 38%; }
-.wiki-infobox-name { text-align: center !important; font-size: 16px; background: #cedff2; }
+.wiki-infobox-name { text-align: center !important; font-size: 16px; padding: 0 !important; }
 .wiki-infobox-image { text-align: center !important; }
 .wiki-infobox-image img { max-width: 100%; margin: 0 auto; }
 .wiki-image-placeholder {
