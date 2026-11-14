@@ -6,8 +6,6 @@ import ClickSpark from "../components/ClickSpark";
 import ScrambledText from "@/components/ScrambledText";
 import SoundCloudEmbed from "../components/SoundCloudEmbed";
 
-import "@fontsource/jersey-10";
-import "@fontsource/jetbrains-mono";
 import AboutMe from "@/components/AboutMe";
 import MyLinks from "@/components/MyLinks";
 import MobileGreeting from "@/components/mobile/Greeting";
